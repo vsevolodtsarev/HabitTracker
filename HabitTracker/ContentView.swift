@@ -33,7 +33,6 @@ struct ContentView: View {
         }
         .padding(.horizontal, 16)
         VStack {
-      
         }
         Spacer()
     }
