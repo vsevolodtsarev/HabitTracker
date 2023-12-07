@@ -9,53 +9,40 @@ import SwiftUI
 import SwiftData
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    @State private var currentDate = Date()
+    @State private var searchText = ""
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        HStack {
+            Button(action: plusButtonTap) {
+                Image(systemName: "plus")
+                    .foregroundStyle(.black)
+                    .font(.title)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+           
+            DatePicker(selection: $currentDate, displayedComponents: [.date]) {
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
         }
+        .padding(.horizontal, 16)
+        
+        HStack {
+            Text("Трекеры")
+                .font(.system(size: 34, weight: .bold, design: .none))
+            
+            Spacer()
+        }
+        .padding(.horizontal, 16)
+        VStack {
+      
+        }
+        Spacer()
     }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
+    
+    private func plusButtonTap() {
+        print("\(currentDate)")
     }
 }
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
 }
