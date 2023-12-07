@@ -16,7 +16,9 @@ final class Tracker {
     var emoji: String
     var recordCount: Int
     var schedule: [Schedule]
+    var trackerCategory: TrackerCategory
     var isPinned: Bool
+    
     
     init(
         id: UUID = UUID(),
@@ -25,6 +27,7 @@ final class Tracker {
         emoji: String,
         recordCount: Int,
         schedule: [Schedule],
+        trackerCategory: TrackerCategory,
         isPinned: Bool = false
     ) {
         self.id = id
@@ -33,6 +36,7 @@ final class Tracker {
         self.emoji = emoji
         self.recordCount = recordCount
         self.schedule = schedule
+        self.trackerCategory = trackerCategory
         self.isPinned = isPinned
     }
 }
