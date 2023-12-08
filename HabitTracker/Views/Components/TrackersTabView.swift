@@ -20,7 +20,7 @@ struct TrackersTabView: View {
             
             StatiscticsView()
                 .tabItem {
-                    Label("Order", systemImage: "flag.checkered.circle")
+                    Label(statisticTabName, systemImage: "flag.checkered.circle")
                 }
         }
     }
