@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct TrackerView: View {
+    @State private var isTrackerPin = false
     @State private var isPlusButtonPressed = false
     @State private var viewColor = Color.red
     @State private var buttonColor = Color.red
@@ -16,13 +17,15 @@ struct TrackerView: View {
         
             VStack {
                 HStack {
-                    ZStack {
                         Text("😀")
                             .overlay {
                                 Circle().stroke(.white.opacity(0.3), lineWidth: 10)
                             }
-                    }
                     Spacer()
+                    Image(systemName: "pin.fill")
+                        .foregroundStyle(.white)
+                        .font(.system(size: 15))
+                        .opacity(isTrackerPin ? 1 : 0)
                 }
                 Spacer(minLength: 8)
                 
