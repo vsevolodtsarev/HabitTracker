@@ -12,8 +12,7 @@ struct TrackersListView: View {
     
     private let viewModel = TrackerListViewModel()
     @State private var currentDate = Date.getDateWithoutTime()
-    @State private var searchText = ""
-
+    
     func testFunc() {
         print("tested2")
     }
@@ -28,18 +27,29 @@ struct TrackersListView: View {
                 }
                 
                 DatePicker(selection: $currentDate, displayedComponents: [.date]) {
-                   
+                    
                 }
                 .datePickerStyle(.compact)
-            
+                
             }
             .padding(.horizontal, 16)
             
-                Text("trackers")
-                    .font(.system(size: 34, weight: .bold, design: .none))
-                    .padding(.trailing, 200)
-        
+            Text("trackers")
+                .font(.system(size: 34, weight: .bold, design: .none))
+                .padding(.trailing, 200)
             Spacer()
+            NoTrackersPlaceHolder()
+            Spacer()
+        }
+    }
+    
+    private struct NoTrackersPlaceHolder: View {
+        var body: some View {
+            VStack {
+                Image("placeHolder1")
+                Text("Что будем отслеживать?")
+                    .font(.system(size: 12))
+            }
         }
     }
     
