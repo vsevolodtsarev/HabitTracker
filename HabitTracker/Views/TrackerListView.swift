@@ -9,10 +9,14 @@ import SwiftUI
 import SwiftData
 
 struct TrackersListView: View {
-    private let title = NSLocalizedString("trackers", comment: "Trackers")
     
-    @State private var currentDate = Date()
+    private let viewModel = TrackerListViewModel()
+    @State private var currentDate = Date.getDateWithoutTime()
     @State private var searchText = ""
+
+    func testFunc() {
+        print("tested2")
+    }
     
     var body: some View {
         VStack {
@@ -24,20 +28,17 @@ struct TrackersListView: View {
                 }
                 
                 DatePicker(selection: $currentDate, displayedComponents: [.date]) {
+                   
                 }
-                
+                .datePickerStyle(.compact)
+            
             }
             .padding(.horizontal, 16)
             
-            HStack {
-                Text(title)
+                Text("trackers")
                     .font(.system(size: 34, weight: .bold, design: .none))
-                Spacer()
-            }
-            .padding(.horizontal, 16)
-            VStack {
-                
-            }
+                    .padding(.trailing, 200)
+        
             Spacer()
         }
     }

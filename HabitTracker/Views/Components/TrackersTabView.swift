@@ -8,19 +8,17 @@
 import SwiftUI
 
 struct TrackersTabView: View {
-    private let trackersTabName = NSLocalizedString("trackers", comment: "trackers")
-    private let statisticTabName = NSLocalizedString("statistics", comment: "statistics")
     
     var body: some View {
         TabView {
             TrackersListView()
                 .tabItem {
-                    Label(trackersTabName, systemImage: "checkmark.circle")
+                    Label("trackers", systemImage: "checkmark.circle")
                 }
             
             StatiscticsView()
                 .tabItem {
-                    Label(statisticTabName, systemImage: "flag.checkered.circle")
+                    Label("statistics", systemImage: "flag.checkered.circle")
                 }
         }
     }
