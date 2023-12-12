@@ -10,13 +10,11 @@ import SwiftData
 
 @Model
 final class TrackerCategory {
-    var id: UUID
+    let id: UUID
     var name: String
-    var trackers: [Tracker]
     
-    init(id: UUID = UUID(), name: String, trackers: [Tracker]) {
+    init(id: UUID = UUID(), name: String) {
         self.id = id
         self.name = name
-        self.trackers = trackers
     }
 }
