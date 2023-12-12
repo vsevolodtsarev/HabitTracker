@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		130C36D62B28709400CC892D /* TrackerCreatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C36D52B28709400CC892D /* TrackerCreatingView.swift */; };
+		130C36D82B287F8900CC892D /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C36D72B287F8900CC892D /* EmojiView.swift */; };
+		130C36DA2B288CAB00CC892D /* ColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C36D92B288CAB00CC892D /* ColorView.swift */; };
+		130C36DC2B28C2A800CC892D /* TrackerEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C36DB2B28C2A800CC892D /* TrackerEditView.swift */; };
 		131DA93B2B2717C0008B8228 /* TrackerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131DA93A2B2717C0008B8228 /* TrackerListViewModel.swift */; };
 		131DA93D2B27235A008B8228 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131DA93C2B27235A008B8228 /* LargeButton.swift */; };
 		131DA93F2B272743008B8228 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131DA93E2B272743008B8228 /* Color + Extension.swift */; };
@@ -25,6 +29,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		130C36D52B28709400CC892D /* TrackerCreatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCreatingView.swift; sourceTree = "<group>"; };
+		130C36D72B287F8900CC892D /* EmojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
+		130C36D92B288CAB00CC892D /* ColorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorView.swift; sourceTree = "<group>"; };
+		130C36DB2B28C2A800CC892D /* TrackerEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerEditView.swift; sourceTree = "<group>"; };
 		131DA93A2B2717C0008B8228 /* TrackerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListViewModel.swift; sourceTree = "<group>"; };
 		131DA93C2B27235A008B8228 /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		131DA93E2B272743008B8228 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
@@ -65,8 +73,10 @@
 		13319F662B22F76F002B595B /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				13DF3C782B20EF6C00AB3AA3 /* TrackerListView.swift */,
 				13319F6E2B231F0F002B595B /* StatiscticsView.swift */,
+				13DF3C782B20EF6C00AB3AA3 /* TrackerListView.swift */,
+				130C36D52B28709400CC892D /* TrackerCreatingView.swift */,
+				130C36DB2B28C2A800CC892D /* TrackerEditView.swift */,
 				13319F692B231A9D002B595B /* Components */,
 			);
 			path = Views;
@@ -78,6 +88,8 @@
 				13319F672B22F78C002B595B /* TrackerCell.swift */,
 				13319F6C2B231E46002B595B /* TrackersTabView.swift */,
 				131DA93C2B27235A008B8228 /* LargeButton.swift */,
+				130C36D72B287F8900CC892D /* EmojiView.swift */,
+				130C36D92B288CAB00CC892D /* ColorView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -170,7 +182,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1500;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					13DF3C722B20EF6C00AB3AA3 = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -218,6 +230,8 @@
 			files = (
 				13DF3CD62B2217CA00AB3AA3 /* TrackerCategory.swift in Sources */,
 				131DA93D2B27235A008B8228 /* LargeButton.swift in Sources */,
+				130C36D62B28709400CC892D /* TrackerCreatingView.swift in Sources */,
+				130C36D82B287F8900CC892D /* EmojiView.swift in Sources */,
 				13319F6F2B231F0F002B595B /* StatiscticsView.swift in Sources */,
 				13319F742B23485E002B595B /* Date + Extension.swift in Sources */,
 				13DF3CD42B2216F500AB3AA3 /* TrackerRecord.swift in Sources */,
@@ -226,6 +240,8 @@
 				131DA93B2B2717C0008B8228 /* TrackerListViewModel.swift in Sources */,
 				13DF3C792B20EF6C00AB3AA3 /* TrackerListView.swift in Sources */,
 				13319F6D2B231E46002B595B /* TrackersTabView.swift in Sources */,
+				130C36DA2B288CAB00CC892D /* ColorView.swift in Sources */,
+				130C36DC2B28C2A800CC892D /* TrackerEditView.swift in Sources */,
 				13DF3C772B20EF6C00AB3AA3 /* HabitTrackerApp.swift in Sources */,
 				13319F682B22F78C002B595B /* TrackerCell.swift in Sources */,
 			);
@@ -239,6 +255,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -302,6 +319,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

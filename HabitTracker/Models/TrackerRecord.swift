@@ -10,13 +10,11 @@ import SwiftData
 
 @Model
 final class TrackerRecord {
-    var id: UUID
-    var tracker: Tracker
+    let id: UUID
     var date: Date
     
-    init(id: UUID = UUID(), tracker: Tracker, date: Date) {
+    init(id: UUID = UUID(), date: Date) {
         self.id = id
-        self.tracker = tracker
         self.date = date
     }
 }

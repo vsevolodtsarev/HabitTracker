@@ -18,6 +18,7 @@ final class Tracker {
     var schedule: [Schedule]
     var trackerCategory: TrackerCategory
     var isPinned: Bool
+    @Relationship var records: [TrackerRecord]?
     
     
     init(
@@ -25,7 +26,7 @@ final class Tracker {
         name: String,
         color: String,
         emoji: String,
-        recordCount: Int,
+        recordCount: Int = 0,
         schedule: [Schedule],
         trackerCategory: TrackerCategory,
         isPinned: Bool = false
@@ -49,4 +50,9 @@ enum Schedule: String, CaseIterable, Codable {
     case friday = "Пятница"
     case saturday = "Суббота"
     case sunday = "Воскресенье"
+}
+
+enum typeOfTracker {
+    case habit
+    case nonRegularEvent
 }
