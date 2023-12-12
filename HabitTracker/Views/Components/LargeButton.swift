@@ -14,9 +14,9 @@ struct LargeButton: View {
     
     var body: some View {
         Button(buttonName, action: didTapButton)
-            .foregroundStyle(Color.white)
+            .foregroundStyle(Color.whiteOnBlackColor)
             .frame(width: 335, height: 60)
-            .background(isActive ? Color.black : Color.inactiveButtonColor)
+            .background(isActive ? Color.blackOnWhiteColor : Color.inactiveButtonColor)
             .clipShape(RoundedRectangle(cornerRadius: 16))
     }
 }
