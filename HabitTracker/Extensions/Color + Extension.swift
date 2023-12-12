@@ -26,7 +26,7 @@ extension Color {
     static let selection15 = Color(UIColor(red: 0.51, green: 0.17, blue: 0.95, alpha: 1))
     static let selection16 = Color(UIColor(red: 0.68, green: 0.34, blue: 0.85, alpha: 1))
     static let selection17 = Color(UIColor(red: 0.55, green: 0.45, blue: 0.9, alpha: 1))
-    static let selection18 = Color(UIColor(red: 0.55, green: 0.45, blue: 0.9, alpha: 1))
+    static let selection18 = Color(UIColor(red: 0.18, green: 0.82, blue: 0.35, alpha: 1))
     
 
     static let inactiveButtonColor = Color(UIColor(red: 0.68, green: 0.69, blue: 0.71, alpha: 1))
