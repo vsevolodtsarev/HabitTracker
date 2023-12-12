@@ -9,7 +9,21 @@ import SwiftUI
 
 struct TrackerCreatingView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(spacing: 16) {
+            
+            Text("Создание трекера")
+                .font(.system(size: 16))
+            Spacer()
+            
+            LargeButton(buttonName: "Привычка", isActive: true, didTapButton: {
+                print("1button")
+            })
+            
+            LargeButton(buttonName: "Нерегулярное событие", isActive: true, didTapButton: {
+                print("2button")
+            })
+            Spacer()
+        }
     }
 }
 
