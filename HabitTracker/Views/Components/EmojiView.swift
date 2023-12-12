@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EmojiView: View {
     
-    @State private var selectedEmoji: String?
+    @State var selectedEmoji: String?
     private let emoji: [String] = [
         "🙂","😻","🌺","🐶","❤️","😱","😇","😡","🥶","🤔","🙌","🍔","🥦","🏓","🥇", "🎸","🏝","😪"
     ]
@@ -29,6 +29,7 @@ struct EmojiView: View {
                 .padding()
             Spacer()
         }
+        .padding(.horizontal, 6)
         LazyVGrid(columns: columns) {
             ForEach(emoji, id: \.self) { emoji in
                 Text(emoji)
