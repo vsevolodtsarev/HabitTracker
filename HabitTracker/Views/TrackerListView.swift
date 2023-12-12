@@ -12,18 +12,22 @@ struct TrackersListView: View {
     
     private let viewModel = TrackerListViewModel()
     @State private var currentDate = Date.getDateWithoutTime()
-    
-    func testFunc() {
-        print("tested2")
-    }
+    @State private var activateModalView = false
     
     var body: some View {
         VStack {
             HStack {
-                Button(action: plusButtonTap) {
+                Button(action: {
+                    activateModalView.toggle()
+                }) {
                     Image(systemName: "plus")
-                        .foregroundStyle(.black)
+                        .foregroundStyle(Color.blackOnWhiteColor)
                         .font(.title)
+                }
+                .sheet(isPresented: $activateModalView) {
+                    NavigationView {
+                        TrackerCreatingView()
+                    }
                 }
                 
                 DatePicker(selection: $currentDate, displayedComponents: [.date]) {
@@ -51,10 +55,6 @@ struct TrackersListView: View {
                     .font(.system(size: 12))
             }
         }
-    }
-    
-    private func plusButtonTap() {
-        print("\(currentDate)")
     }
 }
 

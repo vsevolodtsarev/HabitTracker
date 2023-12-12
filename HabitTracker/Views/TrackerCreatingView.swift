@@ -13,6 +13,7 @@ struct TrackerCreatingView: View {
             
             Text("Создание трекера")
                 .font(.system(size: 16))
+                .padding(.top)
             Spacer()
             
             LargeButton(buttonName: "Привычка", isActive: true, didTapButton: {
