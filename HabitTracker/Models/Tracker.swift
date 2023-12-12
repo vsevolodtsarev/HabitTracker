@@ -51,3 +51,8 @@ enum Schedule: String, CaseIterable, Codable {
     case saturday = "Суббота"
     case sunday = "Воскресенье"
 }
+
+enum typeOfTracker {
+    case habit
+    case nonRegularEvent
+}

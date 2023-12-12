@@ -35,7 +35,7 @@ struct EmojiView: View {
                 Text(emoji)
                     .font(.system(size: 37))
                     .frame(width: 52, height: 52)
-                    .background(selectedEmoji == emoji ? Color.backgroundGreyColor : Color.clear)
+                    .background(selectedEmoji == emoji ? Color.backgroundGrayColor : Color.clear)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
                     .onTapGesture {
                         selectedEmoji = emoji
