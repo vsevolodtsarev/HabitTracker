@@ -9,11 +9,12 @@ import SwiftUI
 
 struct EmojiView: View {
     
+    @State private var selectedEmoji: String?
     private let emoji: [String] = [
         "🙂","😻","🌺","🐶","❤️","😱","😇","😡","🥶","🤔","🙌","🍔","🥦","🏓","🥇", "🎸","🏝","😪"
     ]
     
-    private let columns = [GridItem(.fixed(52)), 
+    private let columns = [GridItem(.fixed(52)),
                            GridItem(.fixed(52)),
                            GridItem(.fixed(52)),
                            GridItem(.fixed(52)),
@@ -21,20 +22,23 @@ struct EmojiView: View {
                            GridItem(.fixed(52))]
     
     var body: some View {
-            HStack {
-                Text("Emoji")
-                    .font(.system(size: 19))
-                    .bold()
-                    .padding()
-                Spacer()
+        HStack {
+            Text("Emoji")
+                .font(.system(size: 19))
+                .bold()
+                .padding()
+            Spacer()
         }
-        LazyVGrid(columns: columns, spacing: 5) {
+        LazyVGrid(columns: columns) {
             ForEach(emoji, id: \.self) { emoji in
                 Text(emoji)
-                    .font(.system(size: 32))
+                    .font(.system(size: 37))
                     .frame(width: 52, height: 52)
-                    .background(Color.gray)
+                    .background(selectedEmoji == emoji ? Color.backgroundGreyColor : Color.clear)
                     .clipShape(RoundedRectangle(cornerRadius: 12))
+                    .onTapGesture {
+                        selectedEmoji = emoji
+                    }
             }
         }
     }
