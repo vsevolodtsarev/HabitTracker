@@ -30,7 +30,6 @@ struct TrackersListView: View {
                     
                 }
                 .datePickerStyle(.compact)
-                
             }
             .padding(.horizontal, 16)
             
@@ -38,6 +37,7 @@ struct TrackersListView: View {
                 .font(.system(size: 34, weight: .bold, design: .none))
                 .padding(.trailing, 200)
             Spacer()
+            
             NoTrackersPlaceHolder()
             Spacer()
         }

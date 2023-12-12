@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		130C36D62B28709400CC892D /* TrackerCreatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 130C36D52B28709400CC892D /* TrackerCreatingView.swift */; };
 		131DA93B2B2717C0008B8228 /* TrackerListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131DA93A2B2717C0008B8228 /* TrackerListViewModel.swift */; };
 		131DA93D2B27235A008B8228 /* LargeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131DA93C2B27235A008B8228 /* LargeButton.swift */; };
 		131DA93F2B272743008B8228 /* Color + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 131DA93E2B272743008B8228 /* Color + Extension.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		130C36D52B28709400CC892D /* TrackerCreatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCreatingView.swift; sourceTree = "<group>"; };
 		131DA93A2B2717C0008B8228 /* TrackerListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListViewModel.swift; sourceTree = "<group>"; };
 		131DA93C2B27235A008B8228 /* LargeButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LargeButton.swift; sourceTree = "<group>"; };
 		131DA93E2B272743008B8228 /* Color + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color + Extension.swift"; sourceTree = "<group>"; };
@@ -67,6 +69,7 @@
 			children = (
 				13DF3C782B20EF6C00AB3AA3 /* TrackerListView.swift */,
 				13319F6E2B231F0F002B595B /* StatiscticsView.swift */,
+				130C36D52B28709400CC892D /* TrackerCreatingView.swift */,
 				13319F692B231A9D002B595B /* Components */,
 			);
 			path = Views;
@@ -218,6 +221,7 @@
 			files = (
 				13DF3CD62B2217CA00AB3AA3 /* TrackerCategory.swift in Sources */,
 				131DA93D2B27235A008B8228 /* LargeButton.swift in Sources */,
+				130C36D62B28709400CC892D /* TrackerCreatingView.swift in Sources */,
 				13319F6F2B231F0F002B595B /* StatiscticsView.swift in Sources */,
 				13319F742B23485E002B595B /* Date + Extension.swift in Sources */,
 				13DF3CD42B2216F500AB3AA3 /* TrackerRecord.swift in Sources */,
