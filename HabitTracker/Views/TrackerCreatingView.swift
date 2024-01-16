@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct TrackerCreatingView: View {
+    @State private var activateModalHabitView = false
+    @State private var activateModalNonRegularView = false
+    
     var body: some View {
         VStack(spacing: 16) {
             
@@ -17,11 +20,21 @@ struct TrackerCreatingView: View {
             Spacer()
             
             LargeButton(buttonName: "Привычка", isActive: true, didTapButton: {
-                print("1button")
+                activateModalHabitView.toggle()
+            })
+            .sheet(isPresented: $activateModalHabitView, content: {
+                NavigationView {
+                    TrackerEditView(typeOfTracker: .habit, viewName: "Новая привычка")
+                }
             })
             
             LargeButton(buttonName: "Нерегулярное событие", isActive: true, didTapButton: {
-                print("2button")
+                activateModalNonRegularView.toggle()
+            })
+            .sheet(isPresented: $activateModalNonRegularView, content: {
+                NavigationView {
+                    TrackerEditView(typeOfTracker: .nonRegularEvent, viewName: "Новое нерегулярное событие")
+                }
             })
             Spacer()
         }
