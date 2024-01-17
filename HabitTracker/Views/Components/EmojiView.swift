@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EmojiView: View {
     
-    @State var selectedEmoji: String?
+    @State private var selectedEmoji: String?
     private let emoji: [String] = [
         "🙂","😻","🌺","🐶","❤️","😱","😇","😡","🥶","🤔","🙌","🍔","🥦","🏓","🥇", "🎸","🏝","😪"
     ]
