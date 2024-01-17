@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ColorView: View {
     
-    @State var selectedColor: Color?
+    @State private var selectedColor: Color?
     private let colors = [Color.selection1,
                           Color.selection2,
                           Color.selection3,
