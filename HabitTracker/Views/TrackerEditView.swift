@@ -35,6 +35,39 @@ struct TrackerEditView: View {
             }
             .padding()
             
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Категория")
+                    Spacer()
+                        .frame(width: 222)
+                    Button("", systemImage: "chevron.right") {
+                        print("1")
+                    }
+                    .foregroundStyle(.gray)
+                }
+                    .padding(.leading)
+                
+                if typeOfTracker == .habit {
+                    Divider()
+                        .padding()
+                    HStack {
+                        Text("Расписание")
+                        Spacer()
+                            .frame(width: 210)
+                        Button("", systemImage: "chevron.right") {
+                            print("2")
+                        }
+                        .foregroundStyle(.gray)
+
+                    }
+                    .padding(.leading)
+                }
+            }
+            .frame(width: 360, height: typeOfTracker == .habit ? 150 : 75)
+            .background(Color(red: 0.9, green: 0.91, blue: 0.92).opacity(0.3))
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+           
+            
             EmojiView()
             
             ColorView()
