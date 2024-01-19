@@ -19,7 +19,9 @@ struct TrackerCreatingView: View {
                 .padding(.top)
             Spacer()
             
-            LargeButton(buttonName: "Привычка", isActive: true, didTapButton: {
+            LargeButton(buttonName: "Привычка", 
+                        isActive: Binding(get: { !self.activateModalHabitView }, set: { _ in }),
+                        didTapButton: {
                 activateModalHabitView.toggle()
             })
             .sheet(isPresented: $activateModalHabitView, content: {
@@ -28,7 +30,9 @@ struct TrackerCreatingView: View {
                 }
             })
             
-            LargeButton(buttonName: "Нерегулярное событие", isActive: true, didTapButton: {
+            LargeButton(buttonName: "Нерегулярное событие", 
+                        isActive: Binding(get: { !self.activateModalNonRegularView }, set: { _ in }),
+                        didTapButton: {
                 activateModalNonRegularView.toggle()
             })
             .sheet(isPresented: $activateModalNonRegularView, content: {
