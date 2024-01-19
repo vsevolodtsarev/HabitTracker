@@ -9,13 +9,14 @@ import SwiftUI
 
 struct LargeButton: View {
     @State var buttonName: String
-    @State var isActive: Bool
+    @Binding var isActive: Bool
     let didTapButton: () -> Void
     
     var body: some View {
-        Button(buttonName) {
-            didTapButton()
+        Button(action: didTapButton) {
+            Text(buttonName)
         }
+        .disabled(!isActive)
             .foregroundStyle(Color.whiteOnBlackColor)
             .frame(width: 335, height: 60)
             .background(isActive ? Color.blackOnWhiteColor : Color.inactiveButtonColor)
