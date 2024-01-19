@@ -20,6 +20,7 @@
 		13319F712B2329CA002B595B /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 13319F702B2329CA002B595B /* Localizable.xcstrings */; };
 		13319F742B23485E002B595B /* Date + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13319F732B23485E002B595B /* Date + Extension.swift */; };
 		1381AF882B5998A60074F747 /* TrackerEditViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1381AF872B5998A60074F747 /* TrackerEditViewModel.swift */; };
+		1381AF8A2B5A55F80074F747 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1381AF892B5A55F80074F747 /* ScheduleView.swift */; };
 		13DF3C772B20EF6C00AB3AA3 /* HabitTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DF3C762B20EF6C00AB3AA3 /* HabitTrackerApp.swift */; };
 		13DF3C792B20EF6C00AB3AA3 /* TrackerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DF3C782B20EF6C00AB3AA3 /* TrackerListView.swift */; };
 		13DF3C7D2B20EF6D00AB3AA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13DF3C7C2B20EF6D00AB3AA3 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		13319F702B2329CA002B595B /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		13319F732B23485E002B595B /* Date + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + Extension.swift"; sourceTree = "<group>"; };
 		1381AF872B5998A60074F747 /* TrackerEditViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerEditViewModel.swift; sourceTree = "<group>"; };
+		1381AF892B5A55F80074F747 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		13DF3C762B20EF6C00AB3AA3 /* HabitTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTrackerApp.swift; sourceTree = "<group>"; };
 		13DF3C782B20EF6C00AB3AA3 /* TrackerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListView.swift; sourceTree = "<group>"; };
 		13DF3C7C2B20EF6D00AB3AA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 				13DF3C782B20EF6C00AB3AA3 /* TrackerListView.swift */,
 				130C36D52B28709400CC892D /* TrackerCreatingView.swift */,
 				130C36DB2B28C2A800CC892D /* TrackerEditView.swift */,
+				1381AF892B5A55F80074F747 /* ScheduleView.swift */,
 				13319F692B231A9D002B595B /* Components */,
 			);
 			path = Views;
@@ -236,6 +239,7 @@
 				131DA93D2B27235A008B8228 /* LargeButton.swift in Sources */,
 				130C36D62B28709400CC892D /* TrackerCreatingView.swift in Sources */,
 				130C36D82B287F8900CC892D /* EmojiView.swift in Sources */,
+				1381AF8A2B5A55F80074F747 /* ScheduleView.swift in Sources */,
 				13319F6F2B231F0F002B595B /* StatiscticsView.swift in Sources */,
 				13319F742B23485E002B595B /* Date + Extension.swift in Sources */,
 				13DF3CD42B2216F500AB3AA3 /* TrackerRecord.swift in Sources */,
