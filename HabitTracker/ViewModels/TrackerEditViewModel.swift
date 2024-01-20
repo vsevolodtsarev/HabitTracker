@@ -13,8 +13,10 @@ final class TrackerEditViewModel {
     var typeOfTracker: typeOfTracker 
     var viewName: String
     var trackerName: String = ""
-    var selectedEmoji: String? = nil
-    var selectedColor: Color? = nil
+    var selectedEmoji: String?
+    var selectedColor: Color?
+    var schedule: [Schedule]?
+    var selectedCategory: TrackerCategory?
     
     init(typeOfTracker: typeOfTracker, viewName: String) {
         self.typeOfTracker = typeOfTracker

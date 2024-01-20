@@ -9,6 +9,8 @@ import SwiftUI
 
 struct TrackerEditView: View {
     @State var viewModel: TrackerEditViewModel
+    @State private var activateModalSchedule = false
+    private let characterLimit = 36
     
     var body: some View {
         ScrollView {
@@ -23,7 +25,12 @@ struct TrackerEditView: View {
                     .padding(.leading)
                     .background(Color.backgroundLightGrayColor)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
-                
+                    .onChange(of: viewModel.trackerName) {
+                        if viewModel.trackerName.count > characterLimit {
+                            viewModel.trackerName = String(viewModel.trackerName.prefix(characterLimit))
+                        }
+                    }
+                  
                 Image(systemName: "minus.circle.fill")
                     .foregroundStyle(viewModel.trackerName == "" ? .clear : .gray)
                     .padding(.leading, 320)
@@ -32,6 +39,13 @@ struct TrackerEditView: View {
                     }
             }
             .padding()
+            
+            Text("Ограничение 38 символов")
+                .font(.system(size: 17, weight: .light))
+                .foregroundStyle(.red)
+                .opacity(viewModel.trackerName.count >= 36 ? 1 : 0)
+                .padding(.top, -15)
+                .padding(.bottom, viewModel.trackerName.count >= characterLimit ? 20 : -30)
             
             VStack(alignment: .leading) {
                 HStack {
@@ -53,8 +67,13 @@ struct TrackerEditView: View {
                         Spacer()
                             .frame(width: 210)
                         Button("", systemImage: "chevron.right") {
-                            print("2")
+                            activateModalSchedule.toggle()
                         }
+                        .sheet(isPresented: $activateModalSchedule, content: {
+                            NavigationView {
+                                ScheduleView(viewModel: ScheduleViewModel())
+                            }
+                        })
                         .foregroundStyle(.gray)
                         
                     }
