@@ -76,8 +76,10 @@ struct TrackerEditView: View {
                 }
                 .frame(width: 166, height: 60)
                 .foregroundStyle(.red)
-                .border(.red)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.red, lineWidth: 1)
+                )
                 
                 Button("Создать") {
                     didTapCreateButton()
