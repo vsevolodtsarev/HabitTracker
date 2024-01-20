@@ -8,29 +8,27 @@
 import SwiftUI
 
 struct TrackerEditView: View {
-    var typeOfTracker: typeOfTracker
-    var viewName: String
+    @State var viewModel: TrackerEditViewModel
     
-    @State var trackerName: String = ""
     var body: some View {
         ScrollView {
-            Text(viewName)
+            Text(viewModel.viewName)
                 .font(.system(size: 16))
                 .padding(.top)
             Spacer()
             
             ZStack {
-                TextField("Введите название трекера", text: $trackerName)
+                TextField("Введите название трекера", text: $viewModel.trackerName)
                     .frame(height: 75)
                     .padding(.leading)
                     .background(Color.backgroundLightGrayColor)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                 
                 Image(systemName: "minus.circle.fill")
-                    .foregroundStyle(trackerName == "" ? .clear : .gray)
+                    .foregroundStyle(viewModel.trackerName == "" ? .clear : .gray)
                     .padding(.leading, 320)
                     .onTapGesture {
-                        trackerName = ""
+                        viewModel.trackerName = ""
                     }
             }
             .padding()
@@ -47,7 +45,7 @@ struct TrackerEditView: View {
                 }
                     .padding(.leading)
                 
-                if typeOfTracker == .habit {
+                if viewModel.typeOfTracker == .habit {
                     Divider()
                         .padding()
                     HStack {
@@ -63,7 +61,7 @@ struct TrackerEditView: View {
                     .padding(.leading)
                 }
             }
-            .frame(width: 360, height: typeOfTracker == .habit ? 150 : 75)
+            .frame(width: 360, height: viewModel.typeOfTracker == .habit ? 150 : 75)
             .background(Color(red: 0.9, green: 0.91, blue: 0.92).opacity(0.3))
             .clipShape(RoundedRectangle(cornerRadius: 16))
            
@@ -103,5 +101,5 @@ struct TrackerEditView: View {
 }
 
 #Preview {
-    TrackerEditView(typeOfTracker: .habit, viewName: "Новая привычка")
+    TrackerEditView(viewModel: TrackerEditViewModel(typeOfTracker: .habit, viewName: "Новая привычка"))
 }

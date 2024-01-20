@@ -26,7 +26,7 @@ struct TrackerCreatingView: View {
             })
             .sheet(isPresented: $activateModalHabitView, content: {
                 NavigationView {
-                    TrackerEditView(typeOfTracker: .habit, viewName: "Новая привычка")
+                    TrackerEditView(viewModel: TrackerEditViewModel(typeOfTracker: .habit, viewName: "Новая привычка"))
                 }
             })
             
@@ -37,7 +37,7 @@ struct TrackerCreatingView: View {
             })
             .sheet(isPresented: $activateModalNonRegularView, content: {
                 NavigationView {
-                    TrackerEditView(typeOfTracker: .nonRegularEvent, viewName: "Новое нерегулярное событие")
+                    TrackerEditView(viewModel: TrackerEditViewModel(typeOfTracker: .nonRegularEvent, viewName: "Новое нерегулярное событие"))
                 }
             })
             Spacer()

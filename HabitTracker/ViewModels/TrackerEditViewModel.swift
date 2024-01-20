@@ -7,6 +7,22 @@
 
 import Foundation
 
+@Observable
 final class TrackerEditViewModel {
+    var typeOfTracker: typeOfTracker 
+    var viewName: String
+    var trackerName: String = ""
     
+    init(typeOfTracker: typeOfTracker, viewName: String) {
+        self.typeOfTracker = typeOfTracker
+        self.viewName = viewName
+    }
+    
+    func didTapCreateButton() {
+            print("1")
+        }
+    
+    func didTapCancelButton() {
+            print("2")
+        }
 }
