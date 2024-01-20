@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import SwiftUI
 
 @Observable
 final class TrackerEditViewModel {
     var typeOfTracker: typeOfTracker 
     var viewName: String
     var trackerName: String = ""
+    var selectedEmoji: String? = nil
+    var selectedColor: Color? = nil
     
     init(typeOfTracker: typeOfTracker, viewName: String) {
         self.typeOfTracker = typeOfTracker
@@ -19,10 +22,10 @@ final class TrackerEditViewModel {
     }
     
     func didTapCreateButton() {
-            print("1")
-        }
+        print(selectedEmoji)
+    }
     
     func didTapCancelButton() {
-            print("2")
-        }
+        print(selectedColor)
+    }
 }

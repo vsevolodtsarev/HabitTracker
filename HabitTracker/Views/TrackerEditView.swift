@@ -43,7 +43,7 @@ struct TrackerEditView: View {
                     }
                     .foregroundStyle(.gray)
                 }
-                    .padding(.leading)
+                .padding(.leading)
                 
                 if viewModel.typeOfTracker == .habit {
                     Divider()
@@ -56,7 +56,7 @@ struct TrackerEditView: View {
                             print("2")
                         }
                         .foregroundStyle(.gray)
-
+                        
                     }
                     .padding(.leading)
                 }
@@ -64,15 +64,14 @@ struct TrackerEditView: View {
             .frame(width: 360, height: viewModel.typeOfTracker == .habit ? 150 : 75)
             .background(Color(red: 0.9, green: 0.91, blue: 0.92).opacity(0.3))
             .clipShape(RoundedRectangle(cornerRadius: 16))
-           
             
-            EmojiView()
+            EmojiView(selectedEmoji: $viewModel.selectedEmoji)
             
-            ColorView()
+            ColorView(selectedColor: $viewModel.selectedColor)
             
             HStack {
                 Button("Отменить") {
-                    didTapCancelButton()
+                    viewModel.didTapCancelButton()
                 }
                 .frame(width: 166, height: 60)
                 .foregroundStyle(.red)
@@ -82,7 +81,7 @@ struct TrackerEditView: View {
                 )
                 
                 Button("Создать") {
-                    didTapCreateButton()
+                    viewModel.didTapCreateButton()
                 }
                 .frame(width: 166, height: 60)
                 .foregroundStyle(.white)
@@ -91,14 +90,6 @@ struct TrackerEditView: View {
             }
             .padding()
         }
-    }
-    
-    func didTapCreateButton() {
-        print("1")
-    }
-    
-    func didTapCancelButton() {
-        print("2")
     }
 }
 
