@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EmojiView: View {
     
-    @State private var selectedEmoji: String?
+    @Binding var selectedEmoji: String?
     private let emoji: [String] = [
         "🙂","😻","🌺","🐶","❤️","😱","😇","😡","🥶","🤔","🙌","🍔","🥦","🏓","🥇", "🎸","🏝","😪"
     ]
@@ -46,5 +46,5 @@ struct EmojiView: View {
 }
 
 #Preview {
-    EmojiView()
+    EmojiView(selectedEmoji: .constant(nil))
 }

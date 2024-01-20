@@ -8,29 +8,27 @@
 import SwiftUI
 
 struct TrackerEditView: View {
-    var typeOfTracker: typeOfTracker
-    var viewName: String
+    @State var viewModel: TrackerEditViewModel
     
-    @State var trackerName: String = ""
     var body: some View {
         ScrollView {
-            Text(viewName)
+            Text(viewModel.viewName)
                 .font(.system(size: 16))
                 .padding(.top)
             Spacer()
             
             ZStack {
-                TextField("Введите название трекера", text: $trackerName)
+                TextField("Введите название трекера", text: $viewModel.trackerName)
                     .frame(height: 75)
                     .padding(.leading)
                     .background(Color.backgroundLightGrayColor)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
                 
                 Image(systemName: "minus.circle.fill")
-                    .foregroundStyle(trackerName == "" ? .clear : .gray)
+                    .foregroundStyle(viewModel.trackerName == "" ? .clear : .gray)
                     .padding(.leading, 320)
                     .onTapGesture {
-                        trackerName = ""
+                        viewModel.trackerName = ""
                     }
             }
             .padding()
@@ -45,9 +43,9 @@ struct TrackerEditView: View {
                     }
                     .foregroundStyle(.gray)
                 }
-                    .padding(.leading)
+                .padding(.leading)
                 
-                if typeOfTracker == .habit {
+                if viewModel.typeOfTracker == .habit {
                     Divider()
                         .padding()
                     HStack {
@@ -58,31 +56,32 @@ struct TrackerEditView: View {
                             print("2")
                         }
                         .foregroundStyle(.gray)
-
+                        
                     }
                     .padding(.leading)
                 }
             }
-            .frame(width: 360, height: typeOfTracker == .habit ? 150 : 75)
+            .frame(width: 360, height: viewModel.typeOfTracker == .habit ? 150 : 75)
             .background(Color(red: 0.9, green: 0.91, blue: 0.92).opacity(0.3))
             .clipShape(RoundedRectangle(cornerRadius: 16))
-           
             
-            EmojiView()
+            EmojiView(selectedEmoji: $viewModel.selectedEmoji)
             
-            ColorView()
+            ColorView(selectedColor: $viewModel.selectedColor)
             
             HStack {
                 Button("Отменить") {
-                    didTapCancelButton()
+                    viewModel.didTapCancelButton()
                 }
                 .frame(width: 166, height: 60)
                 .foregroundStyle(.red)
-                .border(.red)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.red, lineWidth: 1)
+                )
                 
                 Button("Создать") {
-                    didTapCreateButton()
+                    viewModel.didTapCreateButton()
                 }
                 .frame(width: 166, height: 60)
                 .foregroundStyle(.white)
@@ -92,16 +91,8 @@ struct TrackerEditView: View {
             .padding()
         }
     }
-    
-    func didTapCreateButton() {
-        print("1")
-    }
-    
-    func didTapCancelButton() {
-        print("2")
-    }
 }
 
 #Preview {
-    TrackerEditView(typeOfTracker: .habit, viewName: "Новая привычка")
+    TrackerEditView(viewModel: TrackerEditViewModel(typeOfTracker: .habit, viewName: "Новая привычка"))
 }

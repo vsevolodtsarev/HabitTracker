@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ColorView: View {
     
-    @State private var selectedColor: Color?
+    @Binding var selectedColor: Color?
     private let colors = [Color.selection1,
                           Color.selection2,
                           Color.selection3,
@@ -69,5 +69,5 @@ struct ColorView: View {
 }
 
 #Preview {
-    ColorView()
+    ColorView(selectedColor: .constant(nil))
 }
