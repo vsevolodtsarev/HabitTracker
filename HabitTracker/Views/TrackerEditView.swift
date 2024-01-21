@@ -71,7 +71,7 @@ struct TrackerEditView: View {
                         }
                         .sheet(isPresented: $activateModalSchedule, content: {
                             NavigationView {
-                                ScheduleView(viewModel: ScheduleViewModel())
+                                ScheduleView()
                             }
                         })
                         .foregroundStyle(.gray)

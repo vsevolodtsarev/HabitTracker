@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ScheduleView: View {
-    @State var viewModel: ScheduleViewModel
+    private let viewModel = ScheduleViewModel()
     
     var body: some View {
         Text("Расписание")
@@ -41,5 +41,5 @@ struct ScheduleView: View {
 }
 
 #Preview {
-    ScheduleView(viewModel: ScheduleViewModel())
+    ScheduleView()
 }
