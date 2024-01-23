@@ -12,36 +12,36 @@ struct TrackerCreatingView: View {
     @State private var activateModalNonRegularView = false
     
     var body: some View {
-        VStack(spacing: 16) {
-            
-            Text("Создание трекера")
-                .font(.system(size: 16))
-                .padding(.top)
-            Spacer()
-            
-            LargeButton(buttonName: "Привычка", 
-                        isActive: Binding(get: { !self.activateModalHabitView }, set: { _ in }),
-                        didTapButton: {
-                activateModalHabitView.toggle()
-            })
-            .sheet(isPresented: $activateModalHabitView, content: {
-                NavigationView {
-                    TrackerEditView(viewModel: TrackerEditViewModel(typeOfTracker: .habit, viewName: "Новая привычка"))
-                }
-            })
-            
-            LargeButton(buttonName: "Нерегулярное событие", 
-                        isActive: Binding(get: { !self.activateModalNonRegularView }, set: { _ in }),
-                        didTapButton: {
-                activateModalNonRegularView.toggle()
-            })
-            .sheet(isPresented: $activateModalNonRegularView, content: {
-                NavigationView {
-                    TrackerEditView(viewModel: TrackerEditViewModel(typeOfTracker: .nonRegularEvent, viewName: "Новое нерегулярное событие"))
-                }
-            })
-            Spacer()
-        }
+        NavigationStack(root:  {
+            VStack(spacing: 16) {
+                
+                Text("Создание трекера")
+                    .font(.system(size: 16))
+                    .padding(.top)
+                Spacer()
+                
+                LargeButton(buttonName: "Привычка",
+                            isActive: Binding(get: { !self.activateModalHabitView }, set: { _ in }),
+                            didTapButton: {
+                    activateModalHabitView.toggle()
+                })
+                .sheet(isPresented: $activateModalHabitView, content: {
+                    
+                    TrackerEditView(viewModel: TrackerEditViewModel(typeOfTracker: .habit, viewName: "Новая привычка"), scheduleViewModel: ScheduleViewModel())
+                })
+                
+                LargeButton(buttonName: "Нерегулярное событие",
+                            isActive: Binding(get: { !self.activateModalNonRegularView }, set: { _ in }),
+                            didTapButton: {
+                    activateModalNonRegularView.toggle()
+                })
+                .sheet(isPresented: $activateModalNonRegularView, content: {
+                 
+                    TrackerEditView(viewModel: TrackerEditViewModel(typeOfTracker: .nonRegularEvent, viewName: "Новое нерегулярное событие"), scheduleViewModel: ScheduleViewModel())
+                })
+                Spacer()
+            }
+        })
     }
 }
 

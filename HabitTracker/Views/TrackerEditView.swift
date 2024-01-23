@@ -11,6 +11,7 @@ struct TrackerEditView: View {
     @State var viewModel: TrackerEditViewModel
     @State private var activateModalSchedule = false
     private let characterLimit = 36
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         ScrollView {
@@ -90,7 +91,8 @@ struct TrackerEditView: View {
             
             HStack {
                 Button("Отменить") {
-                    viewModel.didTapCancelButton()
+                    dismiss()
+                        
                 }
                 .frame(width: 166, height: 60)
                 .foregroundStyle(.red)

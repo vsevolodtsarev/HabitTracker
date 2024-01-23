@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct ScheduleView: View {
+    @Environment(\.dismiss) private var dismiss
     private let viewModel = ScheduleViewModel()
     
     var body: some View {
         Text("Расписание")
+            .padding(.top)
         List(Schedule.allCases, id: \.rawValue) { schedule in
             Toggle(isOn: Binding(
                 get: { viewModel.selectedSchedule.contains(schedule) },
@@ -34,7 +36,10 @@ struct ScheduleView: View {
                     isActive: Binding(
                         get: { !viewModel.isSelectionEmpty },
                         set: { _ in }),
-                    didTapButton: viewModel.didTapDoneButton)
+                    didTapButton: {
+            viewModel.didTapDoneButton()
+            dismiss()
+        })
         .disabled(viewModel.selectedSchedule.isEmpty)
         .padding(.vertical, 30)
     }
