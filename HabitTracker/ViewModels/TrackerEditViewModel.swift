@@ -10,7 +10,7 @@ import SwiftUI
 
 @Observable
 final class TrackerEditViewModel {
-    var typeOfTracker: typeOfTracker 
+    var typeOfTracker: TypeOfTracker 
     var viewName: String
     var trackerName: String = ""
     var selectedEmoji: String?
@@ -18,7 +18,7 @@ final class TrackerEditViewModel {
     var schedule: [Schedule]?
     var selectedCategory: TrackerCategory?
     
-    init(typeOfTracker: typeOfTracker, viewName: String) {
+    init(typeOfTracker: TypeOfTracker, viewName: String) {
         self.typeOfTracker = typeOfTracker
         self.viewName = viewName
     }
