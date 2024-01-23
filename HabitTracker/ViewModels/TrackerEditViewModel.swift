@@ -15,7 +15,7 @@ final class TrackerEditViewModel {
     var trackerName: String = ""
     var selectedEmoji: String?
     var selectedColor: Color?
-    var schedule: [Schedule]?
+    var schedule: Set<Schedule>?
     var selectedCategory: TrackerCategory?
     
     init(typeOfTracker: TypeOfTracker, viewName: String) {
