@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ScheduleView: View {
     @Environment(\.dismiss) private var dismiss
-    private let viewModel = ScheduleViewModel()
+    let viewModel: ScheduleViewModel
     
     var body: some View {
         Text("Расписание")
@@ -37,7 +37,6 @@ struct ScheduleView: View {
                         get: { !viewModel.isSelectionEmpty },
                         set: { _ in }),
                     didTapButton: {
-            viewModel.didTapDoneButton()
             dismiss()
         })
         .disabled(viewModel.selectedSchedule.isEmpty)
@@ -46,5 +45,5 @@ struct ScheduleView: View {
 }
 
 #Preview {
-    ScheduleView()
+    ScheduleView(viewModel: ScheduleViewModel())
 }
