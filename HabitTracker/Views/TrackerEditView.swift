@@ -8,91 +8,120 @@
 import SwiftUI
 
 struct TrackerEditView: View {
-    @State var viewModel: TrackerEditViewModel
+    @Environment(\.dismiss) private var dismiss
+    @State var trackerEditViewModel: TrackerEditViewModel
     @State private var activateModalSchedule = false
     private let characterLimit = 36
-    @Environment(\.dismiss) private var dismiss
+    let scheduleViewModel: ScheduleViewModel
+    
+    private var scheduleText: String {
+        if trackerEditViewModel.schedule.count == 7 {
+            return "Каждый день"
+        } else if trackerEditViewModel.schedule.isEmpty {
+            return  ""
+        } else {
+            return trackerEditViewModel.schedule.sorted { $0.orderDay < $1.orderDay }
+                .map { $0.shortName }
+                .joined(separator: ", ")
+        }
+    }
     
     var body: some View {
         ScrollView {
-            Text(viewModel.viewName)
+            Text(trackerEditViewModel.viewName)
                 .font(.system(size: 16))
                 .padding(.top)
             Spacer()
             
             ZStack {
-                TextField("Введите название трекера", text: $viewModel.trackerName)
+                TextField("Введите название трекера", text: $trackerEditViewModel.trackerName)
                     .frame(height: 75)
                     .padding(.leading)
                     .background(Color.backgroundLightGrayColor)
                     .clipShape(RoundedRectangle(cornerRadius: 16))
-                    .onChange(of: viewModel.trackerName) {
-                        if viewModel.trackerName.count > characterLimit {
-                            viewModel.trackerName = String(viewModel.trackerName.prefix(characterLimit))
+                    .onChange(of: trackerEditViewModel.trackerName) {
+                        if trackerEditViewModel.trackerName.count > characterLimit {
+                            trackerEditViewModel.trackerName = String(trackerEditViewModel.trackerName.prefix(characterLimit))
                         }
                     }
-                  
+                
                 Image(systemName: "minus.circle.fill")
-                    .foregroundStyle(viewModel.trackerName == "" ? .clear : .gray)
+                    .foregroundStyle(trackerEditViewModel.trackerName == "" ? .clear : .gray)
                     .padding(.leading, 320)
                     .onTapGesture {
-                        viewModel.trackerName = ""
+                        trackerEditViewModel.trackerName = ""
                     }
             }
             .padding()
             
-            Text("Ограничение 38 символов")
+            Text("Ограничение 36 символов")
                 .font(.system(size: 17, weight: .light))
                 .foregroundStyle(.red)
-                .opacity(viewModel.trackerName.count >= 36 ? 1 : 0)
+                .opacity(trackerEditViewModel.trackerName.count >= 36 ? 1 : 0)
                 .padding(.top, -15)
-                .padding(.bottom, viewModel.trackerName.count >= characterLimit ? 20 : -30)
+                .padding(.bottom, trackerEditViewModel.trackerName.count >= characterLimit ? 20 : -30)
             
-            VStack(alignment: .leading) {
-                HStack {
-                    Text("Категория")
-                    Spacer()
-                        .frame(width: 222)
-                    Button("", systemImage: "chevron.right") {
-                        print("1")
-                    }
-                    .foregroundStyle(.gray)
-                }
-                .padding(.leading)
-                
-                if viewModel.typeOfTracker == .habit {
-                    Divider()
-                        .padding()
+            NavigationStack {
+                VStack(alignment: .leading) {
                     HStack {
-                        Text("Расписание")
-                        Spacer()
-                            .frame(width: 210)
-                        Button("", systemImage: "chevron.right") {
-                            activateModalSchedule.toggle()
+                        VStack {
+                            Text("Категория")
+                            Text(((trackerEditViewModel.selectedCategory?.name.isEmpty) != nil) ? "" : "1")
+                                .padding(.leading, -40)
+                                .foregroundStyle(.gray)
                         }
-                        .sheet(isPresented: $activateModalSchedule, content: {
-                            NavigationView {
-                                ScheduleView()
-                            }
-                        })
+                        Spacer()
+                            .frame(width: 222)
+                        Button("", systemImage: "chevron.right") {
+                            print("1")
+                        }
                         .foregroundStyle(.gray)
-                        
                     }
+                    .frame(height: 50)
                     .padding(.leading)
+                    
+                    if trackerEditViewModel.typeOfTracker == .habit {
+                        Divider()
+                            .padding(.horizontal)
+                            .padding(.bottom, 8)
+                        HStack {
+                            VStack(alignment: .leading) {
+                                Text("Расписание")
+                                Text(scheduleText)
+                                    .frame(maxWidth: 400, alignment: .leading)
+                                    .foregroundColor(.gray)
+                            }
+                            
+                            Button("", systemImage: "chevron.right") {
+                                activateModalSchedule.toggle()
+                            }
+                            .padding()
+                            .foregroundStyle(.gray)
+                            .sheet(isPresented: $activateModalSchedule, onDismiss: {
+                                trackerEditViewModel.schedule = scheduleViewModel.selectedSchedule
+                            },content: {
+                                
+                                ScheduleView(viewModel: scheduleViewModel)
+                            })
+                        }
+                        .frame(height: 50)
+                        .padding(.leading)
+                    }
                 }
+                .frame(width: 360, height: trackerEditViewModel.typeOfTracker == .habit ? 150 : 75)
+                .background(Color(red: 0.9, green: 0.91, blue: 0.92).opacity(0.3))
+                
             }
-            .frame(width: 360, height: viewModel.typeOfTracker == .habit ? 150 : 75)
-            .background(Color(red: 0.9, green: 0.91, blue: 0.92).opacity(0.3))
+            .frame(width: 360, height: trackerEditViewModel.typeOfTracker == .habit ? 150 : 75)
             .clipShape(RoundedRectangle(cornerRadius: 16))
             
-            EmojiView(selectedEmoji: $viewModel.selectedEmoji)
+            EmojiView(selectedEmoji: $trackerEditViewModel.selectedEmoji)
             
-            ColorView(selectedColor: $viewModel.selectedColor)
+            ColorView(selectedColor: $trackerEditViewModel.selectedColor)
             
             HStack {
                 Button("Отменить") {
                     dismiss()
-                        
                 }
                 .frame(width: 166, height: 60)
                 .foregroundStyle(.red)
@@ -102,7 +131,7 @@ struct TrackerEditView: View {
                 )
                 
                 Button("Создать") {
-                    viewModel.didTapCreateButton()
+                    trackerEditViewModel.didTapCreateButton()
                 }
                 .frame(width: 166, height: 60)
                 .foregroundStyle(.white)
@@ -115,5 +144,5 @@ struct TrackerEditView: View {
 }
 
 #Preview {
-    TrackerEditView(viewModel: TrackerEditViewModel(typeOfTracker: .habit, viewName: "Новая привычка"))
+    TrackerEditView(trackerEditViewModel: TrackerEditViewModel(typeOfTracker: .habit, viewName: "Новая привычка"), scheduleViewModel: ScheduleViewModel())
 }

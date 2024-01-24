@@ -20,8 +20,4 @@ final class ScheduleViewModel {
         }
         isSelectionEmpty = selectedSchedule.isEmpty
     }
-    
-    func didTapDoneButton() {
-        print(selectedSchedule)
-    }
 }
