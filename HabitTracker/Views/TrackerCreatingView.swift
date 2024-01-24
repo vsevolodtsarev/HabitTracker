@@ -27,7 +27,7 @@ struct TrackerCreatingView: View {
                 })
                 .sheet(isPresented: $activateModalHabitView, content: {
                     
-                    TrackerEditView(viewModel: TrackerEditViewModel(typeOfTracker: .habit, viewName: "Новая привычка"), scheduleViewModel: ScheduleViewModel())
+                    TrackerEditView(trackerEditViewModel: TrackerEditViewModel(typeOfTracker: .habit, viewName: "Новая привычка"), scheduleViewModel: ScheduleViewModel())
                 })
                 
                 LargeButton(buttonName: "Нерегулярное событие",
@@ -36,8 +36,8 @@ struct TrackerCreatingView: View {
                     activateModalNonRegularView.toggle()
                 })
                 .sheet(isPresented: $activateModalNonRegularView, content: {
-                 
-                    TrackerEditView(viewModel: TrackerEditViewModel(typeOfTracker: .nonRegularEvent, viewName: "Новое нерегулярное событие"), scheduleViewModel: ScheduleViewModel())
+                    
+                    TrackerEditView(trackerEditViewModel: TrackerEditViewModel(typeOfTracker: .nonRegularEvent, viewName: "Новое нерегулярное событие"), scheduleViewModel: ScheduleViewModel())
                 })
                 Spacer()
             }
