@@ -68,7 +68,7 @@ struct TrackerEditView: View {
                             Text("Категория")
                             Text(((trackerEditViewModel.selectedCategory?.name.isEmpty) != nil) ? "" : "1")
                                 .padding(.leading, -40)
-                                .foregroundColor(.gray)
+                                .foregroundStyle(.gray)
                         }
                         Spacer()
                             .frame(width: 222)
@@ -91,7 +91,7 @@ struct TrackerEditView: View {
                                     .frame(maxWidth: 400, alignment: .leading)
                                     .foregroundColor(.gray)
                             }
-
+                            
                             Button("", systemImage: "chevron.right") {
                                 activateModalSchedule.toggle()
                             }
