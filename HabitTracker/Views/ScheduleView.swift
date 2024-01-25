@@ -24,7 +24,6 @@ struct ScheduleView: View {
                 Text(schedule.rawValue)
             })
             .frame(height: 60)
-            .listRowSeparator(.hidden)
             .listRowBackground(Color(red: 0.9, green: 0.91, blue: 0.92).opacity(0.3))
             .tint(.blue)
         }
