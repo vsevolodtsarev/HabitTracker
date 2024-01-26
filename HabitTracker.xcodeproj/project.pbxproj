@@ -23,6 +23,7 @@
 		1381AF8A2B5A55F80074F747 /* ScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1381AF892B5A55F80074F747 /* ScheduleView.swift */; };
 		1381AF8C2B5B8FF60074F747 /* ScheduleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1381AF8B2B5B8FF60074F747 /* ScheduleViewModel.swift */; };
 		13AD7E0A2B6102020093ACF1 /* TrackerCategoryStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AD7E092B6102020093ACF1 /* TrackerCategoryStore.swift */; };
+		13AD7E0C2B6377000093ACF1 /* OnboardingScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13AD7E0B2B6377000093ACF1 /* OnboardingScreen.swift */; };
 		13DF3C772B20EF6C00AB3AA3 /* HabitTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DF3C762B20EF6C00AB3AA3 /* HabitTrackerApp.swift */; };
 		13DF3C792B20EF6C00AB3AA3 /* TrackerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13DF3C782B20EF6C00AB3AA3 /* TrackerListView.swift */; };
 		13DF3C7D2B20EF6D00AB3AA3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13DF3C7C2B20EF6D00AB3AA3 /* Assets.xcassets */; };
@@ -52,6 +53,7 @@
 		1381AF892B5A55F80074F747 /* ScheduleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleView.swift; sourceTree = "<group>"; };
 		1381AF8B2B5B8FF60074F747 /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
 		13AD7E092B6102020093ACF1 /* TrackerCategoryStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerCategoryStore.swift; sourceTree = "<group>"; };
+		13AD7E0B2B6377000093ACF1 /* OnboardingScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingScreen.swift; sourceTree = "<group>"; };
 		13DF3C762B20EF6C00AB3AA3 /* HabitTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HabitTrackerApp.swift; sourceTree = "<group>"; };
 		13DF3C782B20EF6C00AB3AA3 /* TrackerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackerListView.swift; sourceTree = "<group>"; };
 		13DF3C7C2B20EF6D00AB3AA3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		13319F692B231A9D002B595B /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				13AD7E0B2B6377000093ACF1 /* OnboardingScreen.swift */,
 				13319F672B22F78C002B595B /* TrackerCell.swift */,
 				13319F6C2B231E46002B595B /* TrackersTabView.swift */,
 				131DA93C2B27235A008B8228 /* LargeButton.swift */,
@@ -275,6 +278,7 @@
 				130C36DA2B288CAB00CC892D /* ColorView.swift in Sources */,
 				130C36DC2B28C2A800CC892D /* TrackerEditView.swift in Sources */,
 				13DF3C772B20EF6C00AB3AA3 /* HabitTrackerApp.swift in Sources */,
+				13AD7E0C2B6377000093ACF1 /* OnboardingScreen.swift in Sources */,
 				13319F682B22F78C002B595B /* TrackerCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
