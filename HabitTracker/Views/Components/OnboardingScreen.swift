@@ -21,6 +21,7 @@ struct OnboardingScreen: View {
                 Spacer()
                     .frame(height: 450)
                 Text(subscription)
+                    .multilineTextAlignment(.center)
                     .font(.system(size: 32, weight: .bold))
                 Spacer()
                 LargeButton(buttonName: "Вот это технологии!",
@@ -35,5 +36,5 @@ struct OnboardingScreen: View {
 }
 
 #Preview {
-    OnboardingScreen(image: .onboarding1, subscription: "hfuehfuehfue")
+    OnboardingScreen(image: .onboarding1, subscription: "Отслеживайте только то, что хотите")
 }
