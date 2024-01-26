@@ -11,8 +11,10 @@ struct TrackerEditView: View {
     @Environment(\.dismiss) private var dismiss
     @State var trackerEditViewModel: TrackerEditViewModel
     @State private var activateModalSchedule = false
+    @State private var activateModalCategory = false
     private let characterLimit = 36
-    let scheduleViewModel: ScheduleViewModel
+    let scheduleViewModel = ScheduleViewModel()
+    let newCategoryViewModel = NewCategoryViewModel()
     
     private var scheduleText: String {
         if trackerEditViewModel.schedule.count == 7 {
@@ -66,16 +68,23 @@ struct TrackerEditView: View {
                     HStack {
                         VStack {
                             Text("Категория")
-                            Text(((trackerEditViewModel.selectedCategory?.name.isEmpty) != nil) ? "" : "1")
+                            Text((((trackerEditViewModel.selectedCategory?.name.isEmpty) != nil) ? "" : newCategoryViewModel.selectedCategory?.name) ?? "2")
                                 .padding(.leading, -40)
                                 .foregroundStyle(.gray)
                         }
                         Spacer()
                             .frame(width: 222)
                         Button("", systemImage: "chevron.right") {
-                            print("1")
+                            activateModalCategory.toggle()
                         }
                         .foregroundStyle(.gray)
+                        .sheet(isPresented: $activateModalCategory, onDismiss: {
+                            print(newCategoryViewModel.selectedCategory)
+                            trackerEditViewModel.selectedCategory = newCategoryViewModel.selectedCategory
+                        },content: {
+                            
+                            NewCategoryView(newCategoryViewModel: newCategoryViewModel)
+                        })
                     }
                     .frame(height: 50)
                     .padding(.leading)
@@ -144,5 +153,5 @@ struct TrackerEditView: View {
 }
 
 #Preview {
-    TrackerEditView(trackerEditViewModel: TrackerEditViewModel(typeOfTracker: .habit, viewName: "Новая привычка"), scheduleViewModel: ScheduleViewModel())
+    TrackerEditView(trackerEditViewModel: TrackerEditViewModel(typeOfTracker: .habit, viewName: "Новая привычка"))
 }
