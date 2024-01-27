@@ -22,7 +22,7 @@ struct OnboardingView: View {
             
         }
         .ignoresSafeArea()
-        .tabViewStyle(.page(indexDisplayMode: .always))
+        .tabViewStyle(.page(indexDisplayMode: .never))
      
     }
 }

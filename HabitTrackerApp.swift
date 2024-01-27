@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct HabitTrackerApp: App {
+    @AppStorage("isOnboarding") var isOnboarding = true
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Tracker.self,
@@ -27,7 +28,11 @@ struct HabitTrackerApp: App {
     
     var body: some Scene {
         WindowGroup {
-            TrackersTabView()
+            if isOnboarding {
+                OnboardingView()
+            } else {
+                TrackersTabView()
+            }
         }
         .modelContainer(sharedModelContainer)
     }
