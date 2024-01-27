@@ -28,6 +28,14 @@ struct TrackerEditView: View {
         }
     }
     
+    private var categoryText: String {
+        if trackerEditViewModel.selectedCategory == nil {
+            return ""
+        } else {
+            return trackerEditViewModel.selectedCategory?.name ?? "trtrt"
+        }
+    }
+    
     var body: some View {
         ScrollView {
             Text(trackerEditViewModel.viewName)
@@ -66,20 +74,19 @@ struct TrackerEditView: View {
             NavigationStack {
                 VStack(alignment: .leading) {
                     HStack {
-                        VStack {
+                        VStack(alignment: .leading) {
                             Text("Категория")
-                            Text((((trackerEditViewModel.selectedCategory?.name.isEmpty) != nil) ? "" : newCategoryViewModel.selectedCategory?.name) ?? "2")
-                                .padding(.leading, -40)
+                            Text(categoryText)
+                                .frame(maxWidth: 400, alignment: .leading)
                                 .foregroundStyle(.gray)
                         }
-                        Spacer()
-                            .frame(width: 222)
+                        
                         Button("", systemImage: "chevron.right") {
                             activateModalCategory.toggle()
                         }
+                        .padding()
                         .foregroundStyle(.gray)
                         .sheet(isPresented: $activateModalCategory, onDismiss: {
-                            print(newCategoryViewModel.selectedCategory)
                             trackerEditViewModel.selectedCategory = newCategoryViewModel.selectedCategory
                         },content: {
                             

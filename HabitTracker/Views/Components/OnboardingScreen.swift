@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct OnboardingScreen: View {
+    @AppStorage("isOnboarding") var isOnboarding: Bool?
     let image: ImageResource
     let subscription: String
     
@@ -27,7 +28,7 @@ struct OnboardingScreen: View {
                 LargeButton(buttonName: "Вот это технологии!",
                             isActive: Binding(get: { return true },
                                               set: { _ in })) {
-                    print("qq")
+                    isOnboarding = false
                 }
                                               .padding(.bottom, 40)
             }
