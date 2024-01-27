@@ -8,8 +8,27 @@
 import SwiftUI
 
 struct AddingCategoryView: View {
+    @Environment(\.dismiss) private var dismiss
+    @State var addingCategoryViewModel = AddingCategoryViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("Новая категория")
+            .padding(.top)
+        TextField("Введите название категории", text: $addingCategoryViewModel.newCategoryName)
+            .frame(height: 75)
+            .padding(.leading)
+            .background(Color.backgroundLightGrayColor)
+            .clipShape(RoundedRectangle(cornerRadius: 16))
+            .padding()
+        Spacer()
+        
+        LargeButton(buttonName: "Готово",
+                    isActive: Binding(get: {
+            !addingCategoryViewModel.newCategoryName.isEmpty
+        }, set: { _ in })) {
+            dismiss()
+        }
+        .padding()
     }
 }
 
