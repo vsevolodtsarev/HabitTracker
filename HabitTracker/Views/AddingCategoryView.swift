@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct AddingCategoryView: View {
     @Environment(\.dismiss) private var dismiss
     @State var addingCategoryViewModel = AddingCategoryViewModel()
+    @Environment(\.modelContext) private var context
     
     var body: some View {
         Text("Новая категория")
@@ -26,6 +28,8 @@ struct AddingCategoryView: View {
                     isActive: Binding(get: {
             !addingCategoryViewModel.newCategoryName.isEmpty
         }, set: { _ in })) {
+            let newCategory = TrackerCategory(name: addingCategoryViewModel.newCategoryName)
+            context.insert(newCategory)
             dismiss()
         }
         .padding()

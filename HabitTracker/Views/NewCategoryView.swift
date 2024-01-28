@@ -6,10 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NewCategoryView: View {
     @Environment(\.dismiss) private var dismiss
     @State private var activateModalAddingCategoryView = false
+    @Query(sort: \TrackerCategory.name) var categories: [TrackerCategory] = []
+    
     let newCategoryViewModel: NewCategoryViewModel
     
     var body: some View {
@@ -17,10 +20,10 @@ struct NewCategoryView: View {
         Text("Категория")
             .padding(.top)
         
-        if !newCategoryViewModel.mockCategories.isEmpty {
+        if !categories.isEmpty {
             
             List {
-                ForEach(newCategoryViewModel.mockCategories) { category in
+                ForEach(categories) { category in
                     HStack {
                         Text(category.name)
                         Spacer()
