@@ -10,8 +10,8 @@ import Foundation
 @Observable
 final class AddingCategoryViewModel {
     var newCategoryName: String
-    let typeOfCategory: TypeOfCategory
-    let editingCategory: TrackerCategory?
+    var typeOfCategory: TypeOfCategory
+    var editingCategory: TrackerCategory?
     
     init(newCategoryName: String = "",
          typeOfCategory: TypeOfCategory,

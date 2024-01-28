@@ -13,12 +13,7 @@ struct NewCategoryView: View {
     @Environment(\.modelContext) private var context
     @State private var activateModalAddingCategoryView = false
     @Query(sort: \TrackerCategory.name) var categories: [TrackerCategory] = []
-    let mockCat: [TrackerCategory] = [
-        .init(name: "1"),
-        .init(name: "2")
-    ]
-    
-    let newCategoryViewModel: NewCategoryViewModel
+    @State var newCategoryViewModel: NewCategoryViewModel
     
     var body: some View {
         
@@ -37,16 +32,11 @@ struct NewCategoryView: View {
                     }
                     .contextMenu(menuItems: {
                         Button(action: {
-                            activateModalAddingCategoryView.toggle()
+                            
+                            newCategoryViewModel.selectedCategory = category
+                            
                         }) {
                             Text("Редактировать")
-                        }
-                       //TODO: - not working well
-                        .sheet(isPresented: $activateModalAddingCategoryView) {
-                            AddingCategoryView(addingCategoryViewModel: AddingCategoryViewModel(
-                                newCategoryName: category.name,
-                                typeOfCategory: .editCategory,
-                                editingCategory: category))
                         }
                         
                         Button(role: .destructive ,action: {
@@ -55,6 +45,9 @@ struct NewCategoryView: View {
                             Text("Удалить")
                         }
                     })
+                    .sheet(item: $newCategoryViewModel.selectedCategory) { category in
+                        AddingCategoryView(addingCategoryViewModel: AddingCategoryViewModel(newCategoryName: category.name , typeOfCategory: .editCategory, editingCategory: category))
+                    }
                     .onTapGesture {
                         newCategoryViewModel.selectedCategory = category
                         dismiss()
