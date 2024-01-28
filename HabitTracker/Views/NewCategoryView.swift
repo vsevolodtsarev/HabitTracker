@@ -46,7 +46,7 @@ struct NewCategoryView: View {
                         }
                     })
                     .sheet(item: $newCategoryViewModel.selectedCategory) { category in
-                        AddingCategoryView(addingCategoryViewModel: AddingCategoryViewModel(newCategoryName: category.name , typeOfCategory: .editCategory, editingCategory: category))
+                        AddCategoryView(addingCategoryViewModel: AddCategoryViewModel())
                     }
                     .onTapGesture {
                         newCategoryViewModel.selectedCategory = category
@@ -79,7 +79,7 @@ struct NewCategoryView: View {
         })
         .padding(.bottom, 20)
         .sheet(isPresented: $activateModalAddingCategoryView) {
-            AddingCategoryView(addingCategoryViewModel: AddingCategoryViewModel(typeOfCategory: .newCategory))
+            AddCategoryView(addingCategoryViewModel: AddCategoryViewModel())
         }
     }
 }

@@ -8,20 +8,14 @@
 import SwiftUI
 import SwiftData
 
-struct AddingCategoryView: View {
+struct AddCategoryView: View {
     @Environment(\.dismiss) private var dismiss
-    @State var addingCategoryViewModel: AddingCategoryViewModel
+    @State var addingCategoryViewModel: AddCategoryViewModel
     @Environment(\.modelContext) private var context
     
     var body: some View {
-        switch addingCategoryViewModel.typeOfCategory {
-        case .newCategory:
-            Text("Новая категория")
-                .padding(.top)
-        case .editCategory:
-            Text("Редактирование категории")
-                .padding(.top)
-        }
+        Text("Новая категория")
+            .padding(.top)
         
         TextField("Введите название категории", text: $addingCategoryViewModel.newCategoryName)
             .frame(height: 75)
@@ -44,5 +38,5 @@ struct AddingCategoryView: View {
 }
 
 #Preview {
-    AddingCategoryView(addingCategoryViewModel: AddingCategoryViewModel(typeOfCategory: .editCategory))
+    AddCategoryView(addingCategoryViewModel: AddCategoryViewModel())
 }
