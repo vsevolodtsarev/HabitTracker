@@ -34,4 +34,28 @@ extension Color {
     static let whiteOnBlackColor = Color("WhiteOnBlackColor")
     static let backgroundGrayColor = Color(red: 0.9, green: 0.91, blue: 0.92)
     static let backgroundLightGrayColor = Color(UIColor(red: 0.9, green: 0.91, blue: 0.92, alpha: 0.3))
+    
+    static func colorToString(_ color: UIColor) -> String {
+        let components = color.cgColor.components
+        let r: CGFloat = components?[0] ?? 0.0
+        let g: CGFloat = components?[1] ?? 0.0
+        let b: CGFloat = components?[2] ?? 0.0
+        return String.init(
+            format: "%02lX%02lX%02lX",
+            lroundf(Float(r * 255)),
+            lroundf(Float(g * 255)),
+            lroundf(Float(b * 255))
+        )
+    }
+    
+    static func stringToColor(_ string: String) -> Color {
+        var rgbValue:UInt64 = 0
+        Scanner(string: string).scanHexInt64(&rgbValue)
+        return Color(UIColor(
+            red: CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0,
+            green: CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0,
+            blue: CGFloat(rgbValue & 0x0000FF) / 255.0,
+            alpha: CGFloat(1.0)
+        ))
+    }
 }
