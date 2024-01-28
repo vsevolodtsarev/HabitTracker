@@ -33,7 +33,7 @@ struct NewCategoryView: View {
                     .contextMenu(menuItems: {
                         Button(action: {
                             
-                            newCategoryViewModel.selectedCategory = category
+                            newCategoryViewModel.categoryToEdit = category
                             
                         }) {
                             Text("Редактировать")
@@ -45,8 +45,8 @@ struct NewCategoryView: View {
                             Text("Удалить")
                         }
                     })
-                    .sheet(item: $newCategoryViewModel.selectedCategory) { category in
-                        AddCategoryView(addingCategoryViewModel: AddCategoryViewModel())
+                    .sheet(item: $newCategoryViewModel.categoryToEdit) { category in
+                        UpdateCategoryView(category: category)
                     }
                     .onTapGesture {
                         newCategoryViewModel.selectedCategory = category
@@ -56,9 +56,9 @@ struct NewCategoryView: View {
                     .listRowBackground(Color(red: 0.9, green: 0.91, blue: 0.92).opacity(0.3))
                 }
             }
+            
             .scrollContentBackground(.hidden)
             .padding(.top, -20)
-            
             
         } else {
             VStack {
@@ -70,6 +70,7 @@ struct NewCategoryView: View {
                 Spacer()
             }
         }
+        
         LargeButton(buttonName: "Добавить Категорию",
                     isActive: Binding(get: {
             newCategoryViewModel.selectedCategory == nil
