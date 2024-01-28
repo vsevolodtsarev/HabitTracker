@@ -9,9 +9,19 @@ import Foundation
 
 @Observable
 final class AddingCategoryViewModel {
-    var newCategoryName: String = ""
+    var newCategoryName: String
+    let typeOfCategory: TypeOfCategory
+    let editingCategory: TrackerCategory?
     
-    enum typeOfCategory {
+    init(newCategoryName: String = "",
+         typeOfCategory: TypeOfCategory,
+         editingCategory: TrackerCategory? = nil) {
+        self.newCategoryName = newCategoryName
+        self.typeOfCategory = typeOfCategory
+        self.editingCategory = editingCategory
+    }
+    
+    enum TypeOfCategory {
         case newCategory
         case editCategory
     }
