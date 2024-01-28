@@ -10,4 +10,9 @@ import Foundation
 @Observable
 final class AddingCategoryViewModel {
     var newCategoryName: String = ""
+    
+    enum typeOfCategory {
+        case newCategory
+        case editCategory
+    }
 }

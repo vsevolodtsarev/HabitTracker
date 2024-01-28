@@ -9,9 +9,4 @@ import Foundation
 
 final class NewCategoryViewModel {
     var selectedCategory: TrackerCategory?
-    
-    enum typeOfCategory {
-        case allCategories
-        case editCategory
-    }
 }
