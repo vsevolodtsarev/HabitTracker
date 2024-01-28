@@ -49,10 +49,9 @@ struct NewCategoryView: View {
                     .frame(width: 80, height: 80, alignment: .center)
                 Text("Привычки и события можно \n     объединять по смыслу")
                     .font(.system(size: 12))
+                Spacer()
             }
-            Spacer()
         }
-        
         LargeButton(buttonName: "Добавить Категорию",
                     isActive: Binding(get: {
             newCategoryViewModel.selectedCategory == nil
