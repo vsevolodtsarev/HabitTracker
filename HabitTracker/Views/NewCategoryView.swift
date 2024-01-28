@@ -37,14 +37,20 @@ struct NewCategoryView: View {
                     }
                     .contextMenu(menuItems: {
                         Button(action: {
-                            print("1")
+                            activateModalAddingCategoryView.toggle()
                         }) {
                             Text("Редактировать")
+                        }
+                       //TODO: - not working well
+                        .sheet(isPresented: $activateModalAddingCategoryView) {
+                            AddingCategoryView(addingCategoryViewModel: AddingCategoryViewModel(
+                                newCategoryName: category.name,
+                                typeOfCategory: .editCategory,
+                                editingCategory: category))
                         }
                         
                         Button(role: .destructive ,action: {
                             context.delete(category)
-                            print("2")
                         }) {
                             Text("Удалить")
                         }
@@ -80,7 +86,7 @@ struct NewCategoryView: View {
         })
         .padding(.bottom, 20)
         .sheet(isPresented: $activateModalAddingCategoryView) {
-            AddingCategoryView()
+            AddingCategoryView(addingCategoryViewModel: AddingCategoryViewModel(typeOfCategory: .newCategory))
         }
     }
 }
