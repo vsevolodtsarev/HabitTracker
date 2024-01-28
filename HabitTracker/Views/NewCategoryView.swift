@@ -10,8 +10,13 @@ import SwiftData
 
 struct NewCategoryView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var context
     @State private var activateModalAddingCategoryView = false
     @Query(sort: \TrackerCategory.name) var categories: [TrackerCategory] = []
+    let mockCat: [TrackerCategory] = [
+        .init(name: "1"),
+        .init(name: "2")
+    ]
     
     let newCategoryViewModel: NewCategoryViewModel
     
@@ -30,6 +35,20 @@ struct NewCategoryView: View {
                         Image(systemName: "checkmark")
                             .foregroundStyle(category == newCategoryViewModel.selectedCategory ? .blue : .clear)
                     }
+                    .contextMenu(menuItems: {
+                        Button(action: {
+                            print("1")
+                        }) {
+                            Text("Редактировать")
+                        }
+                        
+                        Button(role: .destructive ,action: {
+                            context.delete(category)
+                            print("2")
+                        }) {
+                            Text("Удалить")
+                        }
+                    })
                     .onTapGesture {
                         newCategoryViewModel.selectedCategory = category
                         dismiss()
