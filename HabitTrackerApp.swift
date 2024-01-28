@@ -17,10 +17,9 @@ struct HabitTrackerApp: App {
             TrackerCategory.self,
             TrackerRecord.self
         ])
-        let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-        
+
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            return try ModelContainer(for: schema, configurations: [])
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
