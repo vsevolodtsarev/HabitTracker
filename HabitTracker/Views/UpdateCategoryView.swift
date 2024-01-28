@@ -1,20 +1,22 @@
 //
-//  AddingCategoryView.swift
+//  UpdateCategoryView.swift
 //  HabitTracker
 //
-//  Created by Всеволод Царев on 27.01.2024.
+//  Created by Всеволод Царев on 28.01.2024.
 //
 
 import SwiftUI
 
-struct AddingCategoryView: View {
+struct UpdateCategoryView: View {
     @Environment(\.dismiss) private var dismiss
-    @State var addingCategoryViewModel = AddingCategoryViewModel()
+    @Environment(\.modelContext) private var context
+    @Bindable var category: TrackerCategory
     
     var body: some View {
-        Text("Новая категория")
+        Text("Редактирование категории")
             .padding(.top)
-        TextField("Введите название категории", text: $addingCategoryViewModel.newCategoryName)
+        
+        TextField("Введите название категории", text: $category.name)
             .frame(height: 75)
             .padding(.leading)
             .background(Color.backgroundLightGrayColor)
@@ -24,8 +26,9 @@ struct AddingCategoryView: View {
         
         LargeButton(buttonName: "Готово",
                     isActive: Binding(get: {
-            !addingCategoryViewModel.newCategoryName.isEmpty
+            true
         }, set: { _ in })) {
+            
             dismiss()
         }
         .padding()
@@ -33,5 +36,5 @@ struct AddingCategoryView: View {
 }
 
 #Preview {
-    AddingCategoryView()
+    UpdateCategoryView(category: TrackerCategory(name: "ggg"))
 }

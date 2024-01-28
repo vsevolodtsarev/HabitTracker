@@ -6,26 +6,47 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct NewCategoryView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var context
     @State private var activateModalAddingCategoryView = false
-    let newCategoryViewModel: NewCategoryViewModel
+    @Query(sort: \TrackerCategory.name) var categories: [TrackerCategory] = []
+    @State var newCategoryViewModel: NewCategoryViewModel
     
     var body: some View {
         
         Text("Категория")
             .padding(.top)
         
-        if !newCategoryViewModel.mockCategories.isEmpty {
+        if !categories.isEmpty {
             
             List {
-                ForEach(newCategoryViewModel.mockCategories) { category in
+                ForEach(categories) { category in
                     HStack {
                         Text(category.name)
                         Spacer()
                         Image(systemName: "checkmark")
                             .foregroundStyle(category == newCategoryViewModel.selectedCategory ? .blue : .clear)
+                    }
+                    .contextMenu(menuItems: {
+                        Button(action: {
+                            
+                            newCategoryViewModel.categoryToEdit = category
+                            
+                        }) {
+                            Text("Редактировать")
+                        }
+                        
+                        Button(role: .destructive ,action: {
+                            context.delete(category)
+                        }) {
+                            Text("Удалить")
+                        }
+                    })
+                    .sheet(item: $newCategoryViewModel.categoryToEdit) { category in
+                        UpdateCategoryView(category: category)
                     }
                     .onTapGesture {
                         newCategoryViewModel.selectedCategory = category
@@ -35,9 +56,9 @@ struct NewCategoryView: View {
                     .listRowBackground(Color(red: 0.9, green: 0.91, blue: 0.92).opacity(0.3))
                 }
             }
+            
             .scrollContentBackground(.hidden)
             .padding(.top, -20)
-            
             
         } else {
             VStack {
@@ -46,8 +67,8 @@ struct NewCategoryView: View {
                     .frame(width: 80, height: 80, alignment: .center)
                 Text("Привычки и события можно \n     объединять по смыслу")
                     .font(.system(size: 12))
+                Spacer()
             }
-            Spacer()
         }
         
         LargeButton(buttonName: "Добавить Категорию",
@@ -59,7 +80,7 @@ struct NewCategoryView: View {
         })
         .padding(.bottom, 20)
         .sheet(isPresented: $activateModalAddingCategoryView) {
-            AddingCategoryView()
+            AddCategoryView(addingCategoryViewModel: AddCategoryViewModel())
         }
     }
 }

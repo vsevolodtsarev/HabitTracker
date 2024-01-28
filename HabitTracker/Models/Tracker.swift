@@ -15,7 +15,7 @@ final class Tracker {
     var color: String
     var emoji: String
     var recordCount: Int
-    var schedule: [Schedule]
+    var schedule: Set<Schedule>
     var trackerCategory: TrackerCategory
     var isPinned: Bool
     @Relationship var records: [TrackerRecord]?
@@ -27,7 +27,7 @@ final class Tracker {
         color: String,
         emoji: String,
         recordCount: Int = 0,
-        schedule: [Schedule],
+        schedule: Set<Schedule>,
         trackerCategory: TrackerCategory,
         isPinned: Bool = false
     ) {
