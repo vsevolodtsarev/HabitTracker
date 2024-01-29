@@ -8,20 +8,21 @@
 import SwiftUI
 
 struct TrackerCell: View {
-    @State private var isTrackerPin = false
+    @State var tracker: Tracker
     @State private var isPlusButtonPressed = false
-    @State private var viewColor = Color.red
-    @State private var buttonColor = Color.red
-    @State private var recordCounter = 0
-    @State private var emoji = "🤪"
-    @State private var trackerName = "Тестовый трекер"
+    @State var buttonColor: Color
     
+    init(tracker: Tracker, isPlusButtonPressed: Bool = false) {
+        self.tracker = tracker
+        self.isPlusButtonPressed = isPlusButtonPressed
+        buttonColor = Color.stringToColor(tracker.color)
+    }
     
     var body: some View {
         
         VStack {
             HStack {
-                Text(emoji)
+                Text(tracker.emoji)
                     .overlay {
                         Circle().stroke(.white.opacity(0.3), lineWidth: 10)
                     }
@@ -29,33 +30,33 @@ struct TrackerCell: View {
                 Image(systemName: "pin.fill")
                     .foregroundStyle(.white)
                     .font(.system(size: 15))
-                    .opacity(isTrackerPin ? 1 : 0)
+                    .opacity(tracker.isPinned ? 1 : 0)
             }
             Spacer(minLength: 8)
             
             HStack {
-                Text(trackerName)
+                Text(tracker.name)
                     .font(.system(size: 12))
                     .foregroundStyle(.white)
                 Spacer()
             }
         }
         .padding(12)
-        .background(viewColor)
+        .background(Color.stringToColor(tracker.color))
         .cornerRadius(16)
         .frame(width: 167, height: 90)
         
         HStack {
-            Text(String.localizedStringWithFormat(NSLocalizedString("days", comment: "days count"), recordCounter))
+            Text(String.localizedStringWithFormat(NSLocalizedString("days", comment: "days count"), tracker.recordCount))
                 .font(.system(size: 12))
                 .padding(.leading, 12)
                 .padding(.bottom, 50)
             Spacer()
             ZStack {
                 Button(action: {
-                    recordCounter += 1
+                    tracker.recordCount += 1
                     isPlusButtonPressed.toggle()
-                    buttonColor = isPlusButtonPressed ? buttonColor.opacity(0.3) : viewColor
+                    buttonColor = isPlusButtonPressed ? buttonColor.opacity(0.3) : Color.stringToColor(tracker.color)
                 }) {
                     Image(systemName: !isPlusButtonPressed ? "plus" : "checkmark")
                         .frame(width: 34, height: 34)
@@ -69,8 +70,4 @@ struct TrackerCell: View {
         }
         .frame(width: 167, height: 90)
     }
-}
-
-#Preview {
-    TrackerCell()
 }
