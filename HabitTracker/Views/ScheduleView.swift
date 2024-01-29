@@ -42,7 +42,3 @@ struct ScheduleView: View {
         .padding(.vertical, 30)
     }
 }
-
-#Preview {
-    ScheduleView(viewModel: ScheduleViewModel())
-}

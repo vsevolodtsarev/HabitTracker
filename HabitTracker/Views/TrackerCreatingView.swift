@@ -44,7 +44,3 @@ struct TrackerCreatingView: View {
         })
     }
 }
-
-#Preview {
-    TrackerCreatingView()
-}

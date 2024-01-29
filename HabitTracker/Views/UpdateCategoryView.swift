@@ -34,7 +34,3 @@ struct UpdateCategoryView: View {
         .padding()
     }
 }
-
-#Preview {
-    UpdateCategoryView(category: TrackerCategory(name: "ggg"))
-}

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct OnboardingView: View {
-    @State var currentIndex: Int = 0
+    @State private var currentIndex: Int = 0
     
     var body: some View {
         TabView(selection: $currentIndex) {
@@ -26,9 +26,3 @@ struct OnboardingView: View {
      
     }
 }
-
-#Preview {
-    OnboardingView()
-}
-
-

@@ -25,7 +25,3 @@ struct StatiscticsView: View {
         }
     }
 }
-
-#Preview {
-    StatiscticsView()
-}
