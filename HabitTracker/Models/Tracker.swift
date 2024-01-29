@@ -15,10 +15,9 @@ final class Tracker {
     var color: String
     var emoji: String
     var recordCount: Int
-    var schedule: Set<Schedule>
-    var trackerCategory: TrackerCategory
+    var schedule: String
+    var trackerCategory: String
     var isPinned: Bool
-    @Relationship var records: [TrackerRecord]?
     
     
     init(
@@ -27,8 +26,8 @@ final class Tracker {
         color: String,
         emoji: String,
         recordCount: Int = 0,
-        schedule: Set<Schedule>,
-        trackerCategory: TrackerCategory,
+        schedule: String,
+        trackerCategory: String,
         isPinned: Bool = false
     ) {
         self.id = id
@@ -73,6 +72,31 @@ enum Schedule: String, CaseIterable, Codable {
         case .saturday: return 6
         case .sunday: return 7
         }
+    }
+    
+    static func scheduleToString(_ weekdays: Set<Schedule>?) -> String? {
+        guard let weekdays else { return nil }
+        let indexes = weekdays.map { Self.allCases.firstIndex(of: $0) }
+        var result = ""
+        for i in 0..<7 {
+            if indexes.contains(i) {
+                result += "1"
+            } else {
+                result += "0"
+            }
+        }
+        return result
+    }
+    
+    static func stringToSchedule(from string: String?) -> Set<Schedule>? {
+        guard let string else { return nil }
+        var weekdays = Set<Schedule>()
+        for (index, value) in string.enumerated() {
+            guard value == "1" else { continue }
+            let weekday = Self.allCases[index]
+            weekdays.insert(weekday)
+        }
+        return weekdays
     }
 }
 

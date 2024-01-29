@@ -10,7 +10,7 @@ import SwiftUI
 
 @Observable
 final class TrackerEditViewModel {
-    var typeOfTracker: TypeOfTracker 
+    var typeOfTracker: TypeOfTracker
     var viewName: String
     var trackerName: String = ""
     var selectedEmoji: String?
@@ -23,11 +23,29 @@ final class TrackerEditViewModel {
         self.viewName = viewName
     }
     
-    func didTapCreateButton() {
-        print(selectedEmoji)
+    var isEnableCreateButton: Bool {
+        if !trackerName.isEmpty &&
+            selectedEmoji != nil &&
+            selectedColor != nil &&
+            !schedule.isEmpty &&
+            selectedCategory != nil
+        { return true } else
+        { return false }
     }
     
-    func didTapCancelButton() {
-        print(selectedColor)
+    func addNewTracker() -> Tracker? {
+        guard let selectedColor else { return nil }
+        guard let selectedEmoji else { return nil }
+        guard let selectedCategory else { return nil }
+        guard let stringSchedule = Schedule.scheduleToString(schedule) else { return nil }
+        let color = Color.colorToString(UIColor(selectedColor))
+        
+        
+        let newTracker = Tracker(name: trackerName,
+                                 color: color,
+                                 emoji: selectedEmoji,
+                                 schedule: stringSchedule,
+                                 trackerCategory: selectedCategory.name)
+        return newTracker
     }
 }

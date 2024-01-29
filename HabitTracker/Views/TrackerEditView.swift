@@ -6,9 +6,11 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct TrackerEditView: View {
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var context
     @State var trackerEditViewModel: TrackerEditViewModel
     @State private var activateModalSchedule = false
     @State private var activateModalCategory = false
@@ -147,18 +149,17 @@ struct TrackerEditView: View {
                 )
                 
                 Button("Создать") {
-                    trackerEditViewModel.didTapCreateButton()
+                    guard let newTracker = trackerEditViewModel.addNewTracker() else { return }
+                    context.insert(newTracker)
                 }
+                .disabled(!trackerEditViewModel.isEnableCreateButton)
                 .frame(width: 166, height: 60)
                 .foregroundStyle(.white)
+                .background(trackerEditViewModel.isEnableCreateButton ? .black : .inactiveButtonColor)
                 .background(.placeholder)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
             }
             .padding()
         }
     }
-}
-
-#Preview {
-    TrackerEditView(trackerEditViewModel: TrackerEditViewModel(typeOfTracker: .habit, viewName: "Новая привычка"))
 }
