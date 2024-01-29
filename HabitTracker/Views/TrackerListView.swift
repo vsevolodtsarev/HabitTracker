@@ -57,7 +57,3 @@ struct TrackersListView: View {
         }
     }
 }
-
-#Preview {
-    TrackersListView()
-}

@@ -36,7 +36,3 @@ struct AddCategoryView: View {
         .padding()
     }
 }
-
-#Preview {
-    AddCategoryView(addingCategoryViewModel: AddCategoryViewModel())
-}

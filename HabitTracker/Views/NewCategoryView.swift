@@ -84,7 +84,3 @@ struct NewCategoryView: View {
         }
     }
 }
-
-#Preview {
-    NewCategoryView(newCategoryViewModel: NewCategoryViewModel())
-}
